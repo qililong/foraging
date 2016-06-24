@@ -41,7 +41,7 @@
     <application
         android:name="cn.ucai.foraging.ForagingApplication"
         android:allowBackup="true"
-        android:icon="@drawable/logo_uidemo"
+        android:icon="@drawable/ms_icon"
         android:label="@string/app_name" >
         <activity
             android:name="cn.ucai.foraging.activity.MainActivity"

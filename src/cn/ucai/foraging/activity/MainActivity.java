@@ -67,6 +67,7 @@ import cn.ucai.foraging.db.InviteMessgeDao;
 import cn.ucai.foraging.db.UserDao;
 import cn.ucai.foraging.domain.InviteMessage;
 import cn.ucai.foraging.domain.User;
+import cn.ucai.foraging.fragment.EatFragment;
 import cn.ucai.foraging.utils.CommonUtils;
 
 public class MainActivity extends BaseActivity implements EMEventListener {
@@ -93,6 +94,8 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	
 	private MyConnectionListener connectionListener = null;
 	private MyGroupChangeListener groupChangeListener = null;
+
+	EatFragment mEatFragment;
 
 	/**
 	 * 检查当前用户是否被删除
@@ -140,10 +143,13 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 		chatHistoryFragment = new ChatAllHistoryFragment();
 		contactListFragment = new ContactlistFragment();
 		settingFragment = new SettingsFragment();
-		fragments = new Fragment[] { chatHistoryFragment, contactListFragment, settingFragment };
+		mEatFragment = new EatFragment();
+		fragments = new Fragment[] { mEatFragment, contactListFragment, settingFragment };
 		// 添加显示第一个fragment
-		getSupportFragmentManager().beginTransaction().add(cn.ucai.foraging.R.id.fragment_container, chatHistoryFragment)
-				.add(cn.ucai.foraging.R.id.fragment_container, contactListFragment).hide(contactListFragment).show(chatHistoryFragment)
+		getSupportFragmentManager().beginTransaction()
+				.add(cn.ucai.foraging.R.id.fragment_container, settingFragment)
+				.add(cn.ucai.foraging.R.id.fragment_container, chatHistoryFragment)
+				.add(cn.ucai.foraging.R.id.fragment_container, mEatFragment).hide(mEatFragment).show(mEatFragment)
 				.commit();
 		
 		init();
@@ -335,7 +341,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 		// 把第一个tab设为选中状态
 		mTabs[0].setSelected(true);
 
-		registerForContextMenu(mTabs[1]);
+//		registerForContextMenu(mTabs[1]);
 	}
 
 	/**
