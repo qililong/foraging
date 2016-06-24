@@ -13,12 +13,6 @@
  */
 package cn.ucai.foraging.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -44,7 +38,6 @@ import com.easemob.EMEventListener;
 import com.easemob.EMGroupChangeListener;
 import com.easemob.EMNotifierEvent;
 import com.easemob.EMValueCallBack;
-import cn.ucai.foraging.applib.controller.HXSDKHelper;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMContactListener;
 import com.easemob.chat.EMContactManager;
@@ -56,17 +49,25 @@ import com.easemob.chat.EMMessage;
 import com.easemob.chat.EMMessage.ChatType;
 import com.easemob.chat.EMMessage.Type;
 import com.easemob.chat.TextMessageBody;
+import com.easemob.util.EMLog;
+import com.easemob.util.HanziToPinyin;
+import com.easemob.util.NetUtils;
+import com.umeng.analytics.MobclickAgent;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import cn.ucai.foraging.Constant;
 import cn.ucai.foraging.DemoHXSDKHelper;
+import cn.ucai.foraging.applib.controller.HXSDKHelper;
 import cn.ucai.foraging.db.InviteMessgeDao;
 import cn.ucai.foraging.db.UserDao;
 import cn.ucai.foraging.domain.InviteMessage;
 import cn.ucai.foraging.domain.User;
 import cn.ucai.foraging.utils.CommonUtils;
-import com.easemob.util.EMLog;
-import com.easemob.util.HanziToPinyin;
-import com.easemob.util.NetUtils;
-import com.umeng.analytics.MobclickAgent;
 
 public class MainActivity extends BaseActivity implements EMEventListener {
 
@@ -326,10 +327,11 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	private void initView() {
 		unreadLabel = (TextView) findViewById(cn.ucai.foraging.R.id.unread_msg_number);
 		unreadAddressLable = (TextView) findViewById(cn.ucai.foraging.R.id.unread_address_number);
-		mTabs = new Button[3];
-		mTabs[0] = (Button) findViewById(cn.ucai.foraging.R.id.btn_conversation);
-		mTabs[1] = (Button) findViewById(cn.ucai.foraging.R.id.btn_address_list);
-		mTabs[2] = (Button) findViewById(cn.ucai.foraging.R.id.btn_setting);
+		mTabs = new Button[4];
+		mTabs[0] = (Button) findViewById(cn.ucai.foraging.R.id.btn_1);
+		mTabs[1] = (Button) findViewById(cn.ucai.foraging.R.id.btn_2);
+		mTabs[2] = (Button) findViewById(cn.ucai.foraging.R.id.btn_3);
+		mTabs[3] = (Button) findViewById(cn.ucai.foraging.R.id.btn_4);
 		// 把第一个tab设为选中状态
 		mTabs[0].setSelected(true);
 
@@ -343,14 +345,17 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	 */
 	public void onTabClicked(View view) {
 		switch (view.getId()) {
-		case cn.ucai.foraging.R.id.btn_conversation:
+		case cn.ucai.foraging.R.id.btn_1:
 			index = 0;
 			break;
-		case cn.ucai.foraging.R.id.btn_address_list:
+		case cn.ucai.foraging.R.id.btn_2:
 			index = 1;
 			break;
-		case cn.ucai.foraging.R.id.btn_setting:
+		case cn.ucai.foraging.R.id.btn_3:
 			index = 2;
+			break;
+		case cn.ucai.foraging.R.id.btn_4:
+			index = 3;
 			break;
 		}
 		if (currentTabIndex != index) {
@@ -446,13 +451,13 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	 * 刷新未读消息数
 	 */
 	public void updateUnreadLabel() {
-		int count = getUnreadMsgCountTotal();
-		if (count > 0) {
-			unreadLabel.setText(String.valueOf(count));
-			unreadLabel.setVisibility(View.VISIBLE);
-		} else {
-			unreadLabel.setVisibility(View.INVISIBLE);
-		}
+//		int count = getUnreadMsgCountTotal();
+//		if (count > 0) {
+//			unreadLabel.setText(String.valueOf(count));
+//			unreadLabel.setVisibility(View.VISIBLE);
+//		} else {
+//			unreadLabel.setVisibility(View.INVISIBLE);
+//		}
 	}
 
 	/**
@@ -546,7 +551,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 					String st10 = getResources().getString(cn.ucai.foraging.R.string.have_you_removed);
 					if (ChatActivity.activityInstance != null
 							&& usernameList.contains(ChatActivity.activityInstance.getToChatUsername())) {
-						Toast.makeText(MainActivity.this, ChatActivity.activityInstance.getToChatUsername() + st10, 1)
+						Toast.makeText(MainActivity.this, ChatActivity.activityInstance.getToChatUsername() + st10, Toast.LENGTH_LONG)
 								.show();
 						ChatActivity.activityInstance.finish();
 					}

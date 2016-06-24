@@ -8,30 +8,29 @@
     <LinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:background="#fff"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <RelativeLayout
-            android:id="@+id/btn_container_conversation"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/btn_conversation"
+                android:id="@+id/btn_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableTop="@drawable/tab_home"
+                android:drawableTop="@drawable/btn_color_change"
                 android:background="@null"
                 android:onClick="onTabClicked"
                 android:paddingBottom="2dip"
                 android:scaleType="matrix"
                 android:text="觅食"
                 android:textColor="@color/main_botton_text_color"
-                Ch
+
                 android:textSize="12sp" />
 
         </RelativeLayout>
@@ -43,15 +42,15 @@
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/btn_conversation"
+                android:id="@+id/btn_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableTop="@drawable/tab_home"
+                android:drawableTop="@drawable/btn1_color_change"
                 android:background="@null"
                 android:onClick="onTabClicked"
                 android:paddingBottom="2dip"
                 android:scaleType="matrix"
-                android:text="觅食"
+                android:text="订单"
                 android:textColor="@color/main_botton_text_color"
                 android:textSize="12sp" />
 
@@ -64,42 +63,39 @@
                 android:background="@drawable/unread_dot"
                 android:visibility="visible" />
         </RelativeLayout>
-
         <RelativeLayout
-            android:id="@+id/btn_container_setting"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/btn_conversation"
+                android:id="@+id/btn_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableTop="@drawable/tab_home"
+                android:drawableTop="@drawable/btn2_color_change"
                 android:background="@null"
                 android:onClick="onTabClicked"
                 android:paddingBottom="2dip"
                 android:scaleType="matrix"
-                android:text="觅食"
+                android:text="探索"
                 android:textColor="@color/main_botton_text_color"
                 android:textSize="12sp" />
         </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/btn_container_setting"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" >
 
             <Button
-                android:id="@+id/btn_conversation"
+                android:id="@+id/btn_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableTop="@drawable/tab_home"
+                android:drawableTop="@drawable/btn3_color_change"
                 android:background="@null"
                 android:onClick="onTabClicked"
                 android:paddingBottom="2dip"
                 android:scaleType="matrix"
-                android:text="觅食"
+                android:text="我"
                 android:textColor="@color/main_botton_text_color"
                 android:textSize="12sp" />
         </RelativeLayout>
