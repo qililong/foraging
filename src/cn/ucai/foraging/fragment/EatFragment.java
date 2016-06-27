@@ -1,6 +1,7 @@
 package cn.ucai.foraging.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import cn.ucai.foraging.R;
+import cn.ucai.foraging.activity.DressActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +36,7 @@ public class EatFragment extends Fragment {
     Listener listener;
     private SelectedFragment visble;
 
+    TextView tv_dress;
 
     public EatFragment() {
         // Required empty public constructor
@@ -73,6 +76,16 @@ public class EatFragment extends Fragment {
     private void setListener() {
         tvSelected.setOnClickListener(listener);
         tvSanck.setOnClickListener(listener);
+        setDressListener();
+    }
+
+    private void setDressListener() {
+        tv_dress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DressActivity.class));
+            }
+        });
     }
 
     private void init() {
@@ -85,12 +98,12 @@ public class EatFragment extends Fragment {
         tvSelected = (TextView) layout.findViewById(R.id.tv_selected);
         tvSanck = (TextView) layout.findViewById(R.id.tv_sanck);
         tvSelected.setSelected(true);
+        tv_dress = (TextView) layout.findViewById(R.id.tv_dress);
+
     }
 
     public void setVisble(int visble) {
-        Log.e("main", "setVisble:" + visble);
         if (visble == 0) {
-            Log.e("main", "setVisble");
             tvSelected.setSelected(true);
             tvSanck.setSelected(false);
         } else {
